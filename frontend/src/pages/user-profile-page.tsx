@@ -6,20 +6,18 @@ const UserProfilePage = () => {
   const { updateUser, isLoading: isUpdateUserLoading } = useUpdateUser();
 
   if (isGetUserLoading) {
-    return <span className="mt=20">Loading...</span>;
+    return <span className="mt-20">Loading...</span>;
   }
 
   if (!currentUser) {
-    return <span className="mt=20">Unable to load user profile data.</span>;
+    return <span className="mt-20">Unable to load user profile data.</span>;
   }
   return (
-    <div className="mt-20">
-      <UserProfileForm
-        currentUser={currentUser}
-        onSave={updateUser}
-        isLoading={isUpdateUserLoading}
-      />
-    </div>
+    <UserProfileForm
+      currentUser={currentUser}
+      onSave={updateUser}
+      isLoading={isUpdateUserLoading}
+    />
   );
 };
 
