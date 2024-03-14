@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import AppRoutes from "./AppRoutes";
 import "./global.css";
-import Auth0ProviderWithNavigate from "./auth/Auth0ProviderWithNavigate";
+import AppRoutes from "./AppRoutes";
+import { Toaster } from "@/components/ui/sonner";
+import Auth0ProviderWithNavigate from "@/auth/Auth0ProviderWithNavigate";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <QueryClientProvider client={queryClient}>
         <Auth0ProviderWithNavigate>
           <AppRoutes />
+          <Toaster visibleToasts={1} position="top-right" richColors theme="light"/>
         </Auth0ProviderWithNavigate>
       </QueryClientProvider>
     </Router>
