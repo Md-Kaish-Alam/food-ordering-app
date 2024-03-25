@@ -1,7 +1,7 @@
 import "dotenv/config";
 import cors from "cors";
-import express from "express";
 import mongoose from "mongoose";
+import express, { Request, Response } from "express";
 
 import userRoutes from "./routes/userRoutes";
 
@@ -14,6 +14,12 @@ const PORT = 5001;
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.get("/health", async (req: Request, res: Response) => {
+  res.send({
+    message: "health OK!",
+  });
+});
 
 app.use("/api/v1/user", userRoutes);
 
